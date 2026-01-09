@@ -1,5 +1,10 @@
 server:
-  port: 8080
+  port: 443
+  ssl:
+    key-store: classpath:ssl.buymaa.site.jks
+    key-store-password: 08072re075
+    key-store-type: PKCS12
+    key-alias: ssl.buymaa.site
   servlet:
     context-path: /
 spring:
@@ -8,3 +13,6 @@ spring:
     username: dms_user_92ba109
     password: aliyun-008
     driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

@@ -3,6 +3,8 @@ package com.baima.milk.controller;
 import com.baima.milk.mapper.GoodInfoMapper;
 import com.baima.milk.mapper.po.GoodInfo;
 import com.baima.milk.service.GoodInfoService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +21,14 @@ public class GoodController {
     @GetMapping("/getAllGoodInfos")
     public String getAllGoodInfos() {
         List<GoodInfo> goodInfos = goodInfoService.findGoodInfos();
-        return String.format("goodInfos : %s", goodInfos);
+        return String.format("goodInfos : success!");
+    }
+
+    @GetMapping("/getGoodInfoByGoodId")
+    public String getGoodInfoByGoodId(Long goodId) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        GoodInfo goodInfo = goodInfoService.findGoodInfoById(goodId);
+        return mapper.writeValueAsString(goodInfo);
     }
 
 }

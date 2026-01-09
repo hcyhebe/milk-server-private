@@ -18,4 +18,8 @@ public class GoodInfoService {
     public List<GoodInfo> findGoodInfos() {
         return goodInfoMapper.getAllGoodInfos();
     }
+
+    public GoodInfo findGoodInfoById(Long id) {
+        return goodInfoMapper.findGoodInfoById(id);
+    }
 }
